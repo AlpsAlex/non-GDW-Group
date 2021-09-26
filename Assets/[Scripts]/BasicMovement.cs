@@ -57,4 +57,5 @@ public class BasicMovement : MonoBehaviour
             rigidbody.transform.localPosition = new Vector3(-1f, 22f, -30f);
         }
     }
+
 }
