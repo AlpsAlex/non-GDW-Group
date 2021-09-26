@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class BasicMovement : MonoBehaviour
 {
     Rigidbody rigidbody;
     public float speed = 10.0f;
+
+    public VariableJoystick variableJoystick;
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        Debug.Log(Vector3.forward);
     }
 
     // Update is called once per frame
@@ -18,8 +22,20 @@ public class BasicMovement : MonoBehaviour
     {
         float veloX = Input.GetAxis("Horizontal");
         float veloZ = Input.GetAxis("Vertical");
+
+        if(veloX == 0)
+        {
+            veloX = variableJoystick.Horizontal;
+        }
+        if(veloZ == 0)
+        {
+            veloZ = variableJoystick.Vertical;
+        }
+
         Vector3 veloInput = new Vector3(veloX, 0, veloZ);
         veloInput = Quaternion.Euler(0, Camera.main.transform.rotation.eulerAngles.y, 0) * veloInput;
+
+        Debug.Log(veloInput);
 
         Debug.Log(rigidbody.transform.position);
         //Debug.Log(veloX);
@@ -28,6 +44,8 @@ public class BasicMovement : MonoBehaviour
         {
             rigidbody.AddForce(veloInput * speed);
         }
+
+        rigidbody.AddForce(veloInput * speed);
     }
 
     private void OnCollisionEnter(Collision collision)
