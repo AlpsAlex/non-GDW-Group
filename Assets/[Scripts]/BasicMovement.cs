@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class BasicMovement : MonoBehaviour
 {
@@ -55,6 +55,11 @@ public class BasicMovement : MonoBehaviour
             rigidbody.velocity = Vector3.zero;
             rigidbody.angularVelocity = Vector3.zero;
             rigidbody.transform.localPosition = new Vector3(-1f, 22f, -30f);
+        }
+
+        if(collision.collider.name == "ExitPlane")
+        {
+            SceneManager.LoadScene("VictoryScene");
         }
     }
 
