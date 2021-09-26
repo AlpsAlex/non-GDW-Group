@@ -1,8 +1,6 @@
-<<<<<<< Updated upstream
-Base path: 'C:/Users/leeju/Desktop/Unity Projects fall term 2021/2021.1.22f1/Editor/Data', plugins path 'C:/Users/leeju/Desktop/Unity Projects fall term 2021/2021.1.22f1/Editor/Data/PlaybackEngines'
-=======
 Base path: 'C:/Program Files/Unity/Hub/Editor/2021.1.22f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2021.1.22f1/Editor/Data/PlaybackEngines'
->>>>>>> Stashed changes
 Cmd: initializeCompiler
 
 Cmd: shutdown
+
+Quitting shader compiler process
