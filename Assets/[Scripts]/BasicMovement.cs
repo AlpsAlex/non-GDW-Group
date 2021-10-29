@@ -40,10 +40,12 @@ public class BasicMovement : MonoBehaviour
         Debug.Log(rigidbody.transform.position);
         //Debug.Log(veloX);
         //Debug.Log(veloZ);
+        /*
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.D)))
         {
             rigidbody.AddForce(veloInput * speed);
         }
+        */
 
         rigidbody.AddForce(veloInput * speed);
     }
