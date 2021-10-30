@@ -6,15 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class BasicMovement : MonoBehaviour
 {
-    Rigidbody rigidbody;
+    // get components variable
+    Rigidbody _rigidbody;
     public float speed = 10.0f;
 
     public VariableJoystick variableJoystick;
 
+    // camera touch movement
+    private Vector2 touchPoint1;
+    private Vector2 touchMove;
+    private Camera _camera;
+    private Vector3 cameraPos;
+    private float touchMoveSpd = -1f;
+
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody>();
+        _camera = GetComponent<Camera>();
+        cameraPos = _camera.transform.position;
     }
 
     // Update is called once per frame
@@ -37,26 +47,18 @@ public class BasicMovement : MonoBehaviour
 
         Debug.Log(veloInput);
 
-        Debug.Log(rigidbody.transform.position);
-        //Debug.Log(veloX);
-        //Debug.Log(veloZ);
-        /*
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.D)))
-        {
-            rigidbody.AddForce(veloInput * speed);
-        }
-        */
+        Debug.Log(_rigidbody.transform.position);
 
-        rigidbody.AddForce(veloInput * speed);
+        _rigidbody.AddForce(veloInput * speed);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.name == "Plane")
         {
-            rigidbody.velocity = Vector3.zero;
-            rigidbody.angularVelocity = Vector3.zero;
-            rigidbody.transform.localPosition = new Vector3(-1f, 22f, -30f);
+            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.angularVelocity = Vector3.zero;
+            _rigidbody.transform.localPosition = new Vector3(-1f, 22f, -30f);
         }
 
         if(collision.collider.name == "ExitPlane")
@@ -65,4 +67,32 @@ public class BasicMovement : MonoBehaviour
         }
     }
 
+    private void touchScreenCameraMove()
+    {
+        if (Input.touchCount > 0 && Input.touchCount < 3)
+        {
+            int rightTouchInd = -1;
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                if (Input.GetTouch(i).position.x > 0)
+                    rightTouchInd = i;
+            }
+            if(rightTouchInd >= 0)
+            {
+                if (Input.GetTouch(rightTouchInd).phase == TouchPhase.Began)
+                    touchPoint1 = Input.GetTouch(rightTouchInd).position;
+
+                if (Input.GetTouch(rightTouchInd).phase == TouchPhase.Moved)
+                {
+                    touchMove.x = Input.GetTouch(rightTouchInd).deltaPosition.x * Time.deltaTime;
+                    touchMove.y = Input.GetTouch(rightTouchInd).deltaPosition.y * Time.deltaTime;
+
+                    cameraPos += new Vector3(touchMove.x, touchMove.y, 0) * touchMoveSpd;
+
+                    this.transform.position = cameraPos;
+                }
+            }
+        }
+    }
+    
 }
