@@ -16,18 +16,21 @@ public class BasicMovement : MonoBehaviour
     public GameObject pauseButton;
     public GameObject joystickLeft;
 
-    private GameObject _player;
+    public GameObject spawnPoint;
 
+    private AudioSource _soundSource;
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _player = GameObject.Find("Player1");
+        _rigidbody.transform.position = spawnPoint.transform.position;
+        _soundSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         float veloX = Input.GetAxis("Horizontal");
         float veloZ = Input.GetAxis("Vertical");
 
@@ -43,11 +46,19 @@ public class BasicMovement : MonoBehaviour
         Vector3 veloInput = new Vector3(veloX, 0, veloZ);
         veloInput = Quaternion.Euler(0, Camera.main.transform.rotation.eulerAngles.y, 0) * veloInput;
 
+        if (_rigidbody.velocity.y < -15f)
+        {
+            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.angularVelocity = Vector3.zero;
+            _rigidbody.transform.position = spawnPoint.transform.position;
+        }
+
         //Debug.Log(veloInput);
         //Debug.Log(_rigidbody.transform.position);
         //Debug.Log(_rigidbody.transform.position);
 
         _rigidbody.AddForce(veloInput * speed);
+        volumeControl();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -56,15 +67,27 @@ public class BasicMovement : MonoBehaviour
         {
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.angularVelocity = Vector3.zero;
-            _rigidbody.transform.position = new Vector3(-3.5f, 8f, -10f);
+            _rigidbody.transform.position = spawnPoint.transform.position;
  
         }
 
         if(collision.collider.name == "ExitPlane")
         {
+            Time.timeScale = 0.0f;
             victoryMenu.SetActive(true);
             pauseButton.SetActive(false);
             joystickLeft.SetActive(false);
         }
+    }
+
+    private void volumeControl()
+    {
+        float adaptedVolume = Mathf.Abs(_rigidbody.velocity.magnitude) / 10.0f;
+        if (_rigidbody.velocity.y < 0)
+        {
+            adaptedVolume = 0.0f;
+        }
+        _soundSource.volume = adaptedVolume;
+       
     }
 }
