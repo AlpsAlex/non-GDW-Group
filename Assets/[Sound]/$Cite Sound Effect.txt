@@ -1,7 +1,18 @@
 This Notepad will cite location or website from sound effects download and used in this non-gdw game.
 Button Click Simple: zapsplat_multimedia_click_button_short_sharp_73510
 Cite: “Sound effects obtained from https://www.zapsplat.xn--com-5o0a/
+
 Game Ball Bounce: KY3RAVB-game-ball-bounce.mp3
 Cite: preview downloaded from "Sound effects obtained from https:elements.envato.com
+
 Ball Rolling: medium-ball-rolling-looping-SBA-300070541-preview.mp3
 Cite: "Sound effects obtained from storyblocks.com/audio/search/metal+ball+rolling
+
+rolling stone: 425036kernschallsfx-stone-calcit-deadsea-movement-growling-5-188
+Cite: "https://freesound.org/people/kernschall/sounds/425036/"
+
+dropOnGround: 08191 heavy stones falling
+Cite: "https://freesound.org/people/Robinhood76/sounds/503554/"
+
+win: Level win
+Cite: "https://freesound.org/people/Tuudurt/sounds/258142/"
