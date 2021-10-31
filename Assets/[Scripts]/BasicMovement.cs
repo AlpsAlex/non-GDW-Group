@@ -12,19 +12,17 @@ public class BasicMovement : MonoBehaviour
 
     public VariableJoystick variableJoystick;
 
-    // camera touch movement
-    private Vector2 touchPoint1;
-    private Vector2 touchMove;
-    private Camera _camera;
-    private Vector3 cameraPos;
-    private float touchMoveSpd = -1f;
+    public GameObject victoryMenu;
+    public GameObject pauseButton;
+    public GameObject joystickLeft;
+
+    private GameObject _player;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _camera = GetComponent<Camera>();
-        cameraPos = _camera.transform.position;
+        _player = GameObject.Find("Player1");
     }
 
     // Update is called once per frame
@@ -45,9 +43,9 @@ public class BasicMovement : MonoBehaviour
         Vector3 veloInput = new Vector3(veloX, 0, veloZ);
         veloInput = Quaternion.Euler(0, Camera.main.transform.rotation.eulerAngles.y, 0) * veloInput;
 
-        Debug.Log(veloInput);
-
-        Debug.Log(_rigidbody.transform.position);
+        //Debug.Log(veloInput);
+        //Debug.Log(_rigidbody.transform.position);
+        //Debug.Log(_rigidbody.transform.position);
 
         _rigidbody.AddForce(veloInput * speed);
     }
@@ -58,41 +56,15 @@ public class BasicMovement : MonoBehaviour
         {
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.angularVelocity = Vector3.zero;
-            _rigidbody.transform.localPosition = new Vector3(-1f, 22f, -30f);
+            _rigidbody.transform.position = new Vector3(-3.5f, 8f, -10f);
+ 
         }
 
         if(collision.collider.name == "ExitPlane")
         {
-            SceneManager.LoadScene("VictoryScene");
+            victoryMenu.SetActive(true);
+            pauseButton.SetActive(false);
+            joystickLeft.SetActive(false);
         }
     }
-
-    private void touchScreenCameraMove()
-    {
-        if (Input.touchCount > 0 && Input.touchCount < 3)
-        {
-            int rightTouchInd = -1;
-            for (int i = 0; i < Input.touchCount; i++)
-            {
-                if (Input.GetTouch(i).position.x > 0)
-                    rightTouchInd = i;
-            }
-            if(rightTouchInd >= 0)
-            {
-                if (Input.GetTouch(rightTouchInd).phase == TouchPhase.Began)
-                    touchPoint1 = Input.GetTouch(rightTouchInd).position;
-
-                if (Input.GetTouch(rightTouchInd).phase == TouchPhase.Moved)
-                {
-                    touchMove.x = Input.GetTouch(rightTouchInd).deltaPosition.x * Time.deltaTime;
-                    touchMove.y = Input.GetTouch(rightTouchInd).deltaPosition.y * Time.deltaTime;
-
-                    cameraPos += new Vector3(touchMove.x, touchMove.y, 0) * touchMoveSpd;
-
-                    this.transform.position = cameraPos;
-                }
-            }
-        }
-    }
-    
 }
