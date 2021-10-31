@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene: MonoBehaviour
 {
-
+    private int levelNum;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +21,16 @@ public class ChangeScene: MonoBehaviour
 
     public void ChangeToMain()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(0);
     }
 
     public void ChangeToCurrentGame()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(2);
+    }
+
+    public void nextLevel()
+    {
+        
     }
 }
