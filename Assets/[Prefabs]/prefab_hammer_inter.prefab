@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &549853249019618246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6866149459241417425}
+  m_Layer: 0
+  m_Name: prefab_hammer_inter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6866149459241417425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549853249019618246}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.143, y: -8.305, z: 9.272}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7880396685379677709}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &629043000469302020
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7356378907983541431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4711208715938537054, guid: e747c1902341ae343b9936059db2013a, type: 3}
+--- !u!1001 &3436903819558262432
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6866149459241417425}
+    m_Modifications:
+    - target: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.281
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70240164
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.71178085
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306733997667967511, guid: 316f064debcad4341a1efd23f6b24fa1,
+        type: 3}
+      propertyPath: m_Name
+      value: Basic Hammer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 316f064debcad4341a1efd23f6b24fa1, type: 3}
+--- !u!1 &7356378907983541431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5306733997667967511, guid: 316f064debcad4341a1efd23f6b24fa1,
+    type: 3}
+  m_PrefabInstance: {fileID: 3436903819558262432}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7880396685379677709 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4822966905718225069, guid: 316f064debcad4341a1efd23f6b24fa1,
+    type: 3}
+  m_PrefabInstance: {fileID: 3436903819558262432}
+  m_PrefabAsset: {fileID: 0}

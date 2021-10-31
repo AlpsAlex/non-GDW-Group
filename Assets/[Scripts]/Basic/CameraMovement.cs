@@ -8,9 +8,7 @@ public class CameraMovement : MonoBehaviour
      // camera touch movement
     private Vector2 touchPoint1;
     private Vector2 touchMove;
-    private Camera _camera;
-    private Vector3 cameraPos;
-    private float touchMoveSpd = -1f;
+ 
 
     private CinemachineFreeLook _cmFreeLook;
 
@@ -52,7 +50,9 @@ public class CameraMovement : MonoBehaviour
                 if (Input.GetTouch(rightTouchInd).phase == TouchPhase.Moved)
                 {
                     touchMove.x = Input.GetTouch(rightTouchInd).deltaPosition.x;
+                    touchMove.y = Input.GetTouch(rightTouchInd).deltaPosition.y * Time.deltaTime * -1.0f;
                     _cmFreeLook.m_XAxis.Value += touchMove.x;
+                    _cmFreeLook.m_YAxis.Value += touchMove.y;
                 }
             }
 
