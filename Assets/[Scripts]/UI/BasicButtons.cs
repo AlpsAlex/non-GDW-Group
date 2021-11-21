@@ -9,11 +9,14 @@ public class BasicButtons : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject pauseButton;
     public GameObject joystickLeft;
+    public Slider sldBgmVolume;
+
+    private GameObject sceneController;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        sceneController = GameObject.Find("SceneController");
     }
 
     // Update is called once per frame
@@ -25,6 +28,9 @@ public class BasicButtons : MonoBehaviour
     // Pause Menu
     public void pauseOnClick()
     {
+        sceneController.GetComponent<BasicSoundController>().playSound("BTN_Click");
+        sceneController.GetComponent<BasicSoundController>().pauseSound("BGM");
+        sceneController.GetComponent<BasicSoundController>().pauseSound("CHR_Rolling");
         pauseMenu.SetActive(true);
         pauseButton.SetActive(false);
         joystickLeft.SetActive(false);
@@ -33,6 +39,9 @@ public class BasicButtons : MonoBehaviour
     
     public void resumeOnClick()
     {
+        sceneController.GetComponent<BasicSoundController>().playSound("BTN_Click");
+        sceneController.GetComponent<BasicSoundController>().playSound("BGM");
+        sceneController.GetComponent<BasicSoundController>().playSound("CHR_Rolling");
         pauseButton.SetActive(true);
         joystickLeft.SetActive(true);
         pauseMenu.SetActive(false);
@@ -41,6 +50,7 @@ public class BasicButtons : MonoBehaviour
 
     public void mainmenuOnClick()
     {
+        sceneController.GetComponent<BasicSoundController>().playSound("BTN_Click");
         pauseButton.SetActive(true);
         joystickLeft.SetActive(true);
         pauseMenu.SetActive(false);
@@ -51,11 +61,21 @@ public class BasicButtons : MonoBehaviour
     // Victory Menu
     public void goNextOnClick()
     {
+        sceneController.GetComponent<BasicSoundController>().playSound("BTN_Click");
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void retryOnClick()
     {
+        sceneController.GetComponent<BasicSoundController>().playSound("BTN_Click");
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void bgmSliderOnSlide()
+    {
+        float volume = sldBgmVolume.value;
+        sceneController.GetComponent<BasicSoundController>().setSoundVolume("BGM", volume);
     }
 }
