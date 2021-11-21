@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6866149459241417425}
   m_Layer: 0
-  m_Name: prefab_hammer_inter
+  m_Name: Hammer_Inter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
