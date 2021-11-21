@@ -60,6 +60,7 @@ public class InterControl : MonoBehaviour
 
     private void actFreeFall()
     {
+        Debug.Log(_player.transform.position);
         if(Vector3.Distance(_player.transform.position, checkPoint.transform.position) <= 2.0f)
         {
             GetComponent<Rigidbody>().useGravity = true;
