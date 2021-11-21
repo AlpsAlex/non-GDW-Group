@@ -6,41 +6,74 @@ using UnityEngine.SceneManagement;
 
 public class BasicMovement : MonoBehaviour
 {
-    // get components variable
     Rigidbody _rigidbody;
     public float speed = 10.0f;
 
-    public VariableJoystick variableJoystick;
+    public GameObject playerCamera;
 
-    public GameObject victoryMenu;
-    public GameObject pauseButton;
-    public GameObject joystickLeft;
+    private VariableJoystick _joystick;
 
-    public GameObject spawnPoint;
+    private GameObject victoryMenu;
+    private GameObject pauseButton;
+    private GameObject spawnPoint;
 
     private AudioSource _soundSource;
-    // Start is called before the first frame update
+
+
     void Start()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        GameObject _character = transform.GetChild(0).gameObject;
+        Cinemachine.CinemachineFreeLook cmfl =
+            playerCamera.transform.GetChild(1).GetComponent<Cinemachine.CinemachineFreeLook>();
+        cmfl.LookAt = transform.GetChild(0);
+        cmfl.Follow = transform.GetChild(0);
+
+        spawnPoint = GameObject.Find("spawnPoint");
+        
+        _rigidbody = _character.GetComponent<Rigidbody>();
+        _soundSource = _character.GetComponent<AudioSource>();
+
+        VariableJoystick[] getJoystick = playerCamera.GetComponentsInChildren<VariableJoystick>();
+        foreach(VariableJoystick variableJoystick in getJoystick)
+        {
+            if(variableJoystick.name == "Variable Joystick")
+            {
+                _joystick = variableJoystick;
+            }
+               
+        }
+
+        for (int i = 0; i < playerCamera.transform.GetChild(0).childCount; i++)
+        {
+            GameObject getObj = playerCamera.transform.GetChild(0).GetChild(i).gameObject;
+            if (getObj.name == "PNL_VictoryMenu")
+            {
+                victoryMenu = getObj;
+            }
+
+
+            if (getObj.name == "BTN_Pause")
+            {
+                pauseButton = getObj;
+            }
+        }
+
         _rigidbody.transform.position = spawnPoint.transform.position;
-        _soundSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
         float veloX = Input.GetAxis("Horizontal");
         float veloZ = Input.GetAxis("Vertical");
 
         if(veloX == 0)
         {
-            veloX = variableJoystick.Horizontal;
+            veloX = _joystick.Horizontal;
         }
         if(veloZ == 0)
         {
-            veloZ = variableJoystick.Vertical;
+            veloZ = _joystick.Vertical;
         }
 
         Vector3 veloInput = new Vector3(veloX, 0, veloZ);
@@ -61,23 +94,13 @@ public class BasicMovement : MonoBehaviour
         volumeControl();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void ChildCollisionEnter(BasicCharacter childCharacter)
     {
-        if(collision.collider.name == "Plane")
-        {
-            _rigidbody.velocity = Vector3.zero;
-            _rigidbody.angularVelocity = Vector3.zero;
-            _rigidbody.transform.position = spawnPoint.transform.position;
- 
-        }
-
-        if(collision.collider.name == "ExitPlane")
-        {
-            Time.timeScale = 0.0f;
-            victoryMenu.SetActive(true);
-            pauseButton.SetActive(false);
-            joystickLeft.SetActive(false);
-        }
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
+        Time.timeScale = 0.0f;
+        victoryMenu.SetActive(true);
+        pauseButton.SetActive(false);
     }
 
     private void volumeControl()
