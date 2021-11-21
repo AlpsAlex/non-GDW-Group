@@ -11,7 +11,7 @@ public class BasicSpawnPlayer : MonoBehaviour
     void Start()
     {
         GameObject playerLoad = (GameObject)Resources.Load("Player");
-        GameObject PlayerCameraLoad = (GameObject)Resources.Load("PlayerCamera_1");
+        GameObject PlayerCameraLoad = (GameObject)Resources.Load("PlayerCamera");
         //_playerCamera = Instantiate(Resources.Load("Resources/PlayerCamera")) as GameObject;
 
         _playerCamera = Instantiate(PlayerCameraLoad);

@@ -18,9 +18,6 @@ public class BasicCharacter : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.name == "Goal")
-        {
-            transform.parent.GetComponent<BasicMovement>().ChildCollisionEnter(this);
-        }
+        transform.parent.GetComponent<BasicMovement>().ChildCollisionEnter(collision);
     }
 }
