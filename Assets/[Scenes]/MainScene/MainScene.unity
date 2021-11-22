@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 258419488}
   - component: {fileID: 258419489}
   m_Layer: 0
-  m_Name: BTN_click
+  m_Name: BTN_Click
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
