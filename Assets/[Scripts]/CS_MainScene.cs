@@ -10,11 +10,14 @@ public class CS_MainScene : MonoBehaviour
     public GameObject Menu;
     public GameObject LevelSelection;
 
+    
+
     private AudioSource _clickSound;
     private AudioSource _bgm;
 
     void Start()
     {
+        
         Menu.SetActive(true);
         LevelSelection.SetActive(false);
 
