@@ -10,6 +10,7 @@ public class BasicButtons : MonoBehaviour
     public GameObject pauseButton;
     public GameObject joystickLeft;
     public Slider sldBgmVolume;
+    public Slider sldGpVolume;
 
     private GameObject sceneController;
 
@@ -17,6 +18,8 @@ public class BasicButtons : MonoBehaviour
     void Start()
     {
         sceneController = GameObject.Find("SceneController");
+        bgmSliderOnSlide();
+        gPlaySliderOnSlide();
     }
 
     // Update is called once per frame
@@ -77,5 +80,15 @@ public class BasicButtons : MonoBehaviour
     {
         float volume = sldBgmVolume.value;
         sceneController.GetComponent<BasicSoundController>().setSoundVolume("BGM", volume);
+    }
+
+    public void gPlaySliderOnSlide()
+    {
+        float volume = sldGpVolume.value;
+        sceneController.GetComponent<BasicSoundController>().setSoundVolume("BTN_Click", volume);
+        sceneController.GetComponent<BasicSoundController>().setSoundVolume("CHR_Rolling", volume);
+        sceneController.GetComponent<BasicSoundController>().setSoundVolume("CHR_Victory", volume);
+        sceneController.GetComponent<BasicSoundController>().setSoundVolume("CHR_Drop", volume);
+        sceneController.GetComponent<BasicSoundController>().setSoundVolume("CHR_Bounce", volume);
     }
 }
