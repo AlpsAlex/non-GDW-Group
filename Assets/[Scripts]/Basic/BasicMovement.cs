@@ -71,6 +71,7 @@ public class BasicMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        sceneController.transform.GetChild(6).position = _rigidbody.transform.position;
         float veloX = Input.GetAxis("Horizontal");
         float veloZ = Input.GetAxis("Vertical");
 
