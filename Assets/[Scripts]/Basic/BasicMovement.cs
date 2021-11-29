@@ -11,6 +11,8 @@ public class BasicMovement : MonoBehaviour
 
     public GameObject playerCamera;
 
+    public bool isSmall;
+
     private GameObject _character;
 
     private VariableJoystick _joystick;
@@ -87,7 +89,7 @@ public class BasicMovement : MonoBehaviour
         Vector3 veloInput = new Vector3(veloX, 0, veloZ);
         veloInput = Quaternion.Euler(0, Camera.main.transform.rotation.eulerAngles.y, 0) * veloInput;
 
-        if (_rigidbody.velocity.y < -15f)
+        if (_rigidbody.velocity.y < -10f)
         {
             sceneController.GetComponent<BasicSoundController>().playSound("CHR_Drop");
             _rigidbody.velocity = Vector3.zero;
@@ -98,8 +100,11 @@ public class BasicMovement : MonoBehaviour
         //Debug.Log(veloInput);
         //Debug.Log(_rigidbody.transform.position);
         //Debug.Log(_rigidbody.transform.position);
+        float speedMult = 1;
+        if (isSmall)
+            speedMult = 2;
 
-        _rigidbody.AddForce(veloInput * speed);
+        _rigidbody.AddForce(veloInput * speed * speedMult);
         volumeControl();
 
         lstFrameSpeed = _rigidbody.velocity.magnitude;
