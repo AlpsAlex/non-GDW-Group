@@ -36,7 +36,7 @@ public class CameraMovement : MonoBehaviour
             int rightTouchInd = -1;
             for (int i = 0; i < Input.touchCount; i++)
             {
-                if (Input.GetTouch(i).position.x > 1500)
+                if (Input.GetTouch(i).position.x > (UnityEngine.Screen.width / 2))
                     rightTouchInd = i;
             }
 
@@ -49,8 +49,8 @@ public class CameraMovement : MonoBehaviour
 
                 if (Input.GetTouch(rightTouchInd).phase == TouchPhase.Moved)
                 {
-                    touchMove.x = Input.GetTouch(rightTouchInd).deltaPosition.x;
-                    touchMove.y = Input.GetTouch(rightTouchInd).deltaPosition.y * Time.deltaTime * -1.0f;
+                    touchMove.x = Input.GetTouch(rightTouchInd).deltaPosition.x * 0.2f;
+                    touchMove.y = Input.GetTouch(rightTouchInd).deltaPosition.y * -0.02f;
                     _cmFreeLook.m_XAxis.Value += touchMove.x;
                     _cmFreeLook.m_YAxis.Value += touchMove.y;
                 }
