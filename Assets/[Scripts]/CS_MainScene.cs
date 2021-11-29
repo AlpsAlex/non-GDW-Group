@@ -70,6 +70,12 @@ public class CS_MainScene : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
+    public void threeOnClick()
+    {
+        _clickSound.Play();
+        SceneManager.LoadScene(4);
+    }
+
     public void returnOnClick()
     {
         _clickSound.Play();
