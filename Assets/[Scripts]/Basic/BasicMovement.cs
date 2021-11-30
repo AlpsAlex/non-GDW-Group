@@ -21,6 +21,8 @@ public class BasicMovement : MonoBehaviour
     private GameObject pauseButton;
     private GameObject spawnPoint;
 
+    private GameObject _goal;
+
     //private AudioSource _soundSource;
 
     private GameObject sceneController;
@@ -68,11 +70,14 @@ public class BasicMovement : MonoBehaviour
 
         _rigidbody.transform.position = spawnPoint.transform.position;
         sceneController.GetComponent<BasicSoundController>().playSound("CHR_Bounce");
+
+        _goal = GameObject.Find("Goal");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        everestEgg();
         sceneController.transform.GetChild(6).position = _rigidbody.transform.position;
         float veloX = Input.GetAxis("Horizontal");
         float veloZ = Input.GetAxis("Vertical");
@@ -89,7 +94,7 @@ public class BasicMovement : MonoBehaviour
         Vector3 veloInput = new Vector3(veloX, 0, veloZ);
         veloInput = Quaternion.Euler(0, Camera.main.transform.rotation.eulerAngles.y, 0) * veloInput;
 
-        if (_rigidbody.velocity.y < -10f)
+        if (_rigidbody.velocity.y < -15f)
         {
             sceneController.GetComponent<BasicSoundController>().playSound("CHR_Drop");
             _rigidbody.velocity = Vector3.zero;
@@ -152,5 +157,18 @@ public class BasicMovement : MonoBehaviour
     {
         return Physics.Raycast(_character.transform.position, Vector3.down, 
             _character.GetComponent<SphereCollider>().radius + 0.1f);
+    }
+
+    private void everestEgg()
+    {
+        if(Input.GetKey(KeyCode.G))
+            if (Input.GetKey(KeyCode.O))
+                if (Input.GetKey(KeyCode.A))
+                    if (Input.GetKey(KeyCode.L))
+                    {
+                        _rigidbody.velocity = Vector3.zero;
+                        _rigidbody.angularVelocity = Vector3.zero;
+                        _rigidbody.transform.position = new Vector3(_goal.transform.position.x, _goal.transform.position.y + 5.0f, _goal.transform.position.z);
+                    }
     }
 }
