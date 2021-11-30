@@ -98,7 +98,7 @@ public class InterControl : MonoBehaviour
                 {
                     if (_player.transform.parent.GetComponent<BasicMovement>().isSmall)
                     {
-                        Debug.Log("BIG");
+                        //Debug.Log("BIG");
                         countDown = 3;
                         Vector3 lastPos = _player.transform.position;
                         _player.transform.parent.localScale = new Vector3(1f, 1f, 1f);
@@ -107,7 +107,7 @@ public class InterControl : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Small");
+                        //Debug.Log("Small");
                         countDown = 3;
                         Vector3 lastPos = _player.transform.position;
                         _player.transform.parent.localScale = new Vector3(0.2f, 0.2f, 0.2f);
@@ -125,6 +125,6 @@ public class InterControl : MonoBehaviour
         {
             countDown -= Time.deltaTime;
         }
-        Debug.Log(countDown);
+        //Debug.Log(countDown);
     }
 }
