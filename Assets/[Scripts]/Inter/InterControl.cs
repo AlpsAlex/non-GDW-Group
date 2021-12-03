@@ -55,6 +55,7 @@ public class InterControl : MonoBehaviour
 
             case controlAction.magicBean:
                 isMagicBean = true;
+                everestEgg();
                 actMagicBean(rotationAxis);
                 break;
 
@@ -126,5 +127,19 @@ public class InterControl : MonoBehaviour
             countDown -= Time.deltaTime;
         }
         //Debug.Log(countDown);
+    }
+
+    private void everestEgg()
+    {
+        if(Input.GetKey(KeyCode.B))
+            if (Input.GetKey(KeyCode.E))
+                if (Input.GetKey(KeyCode.A))
+                    if (Input.GetKey(KeyCode.N))
+                    {
+                        _player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                        _player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+                        _player.transform.position = new Vector3(transform.position.x, transform.position.y + 5.0f, transform.position.z);
+
+                    }
     }
 }

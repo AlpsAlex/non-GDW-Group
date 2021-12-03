@@ -49,8 +49,8 @@ public class CameraMovement : MonoBehaviour
 
                 if (Input.GetTouch(rightTouchInd).phase == TouchPhase.Moved)
                 {
-                    touchMove.x = Input.GetTouch(rightTouchInd).deltaPosition.x * 0.2f;
-                    touchMove.y = Input.GetTouch(rightTouchInd).deltaPosition.y * -0.02f;
+                    touchMove.x = Input.GetTouch(rightTouchInd).deltaPosition.x * 0.02f;
+                    touchMove.y = Input.GetTouch(rightTouchInd).deltaPosition.y * -0.002f;
                     _cmFreeLook.m_XAxis.Value += touchMove.x;
                     _cmFreeLook.m_YAxis.Value += touchMove.y;
                 }
